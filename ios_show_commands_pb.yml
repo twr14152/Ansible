@@ -1,0 +1,16 @@
+
+---
+- name: Get Router Information
+ gather_facts: no
+ hosts: routers
+ tasks:
+   - name: Show Commands
+     ios_command:
+       host: "{{ ansible_host }}"
+       username: "{{ ansible_user }}"
+       password: "{{ ansible_password }}"
+       commands:
+         - show ip int brief
+         - show ver | i image
+     register: inventory
+   - debug: var=inventory.stdout_lines
