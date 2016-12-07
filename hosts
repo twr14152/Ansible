@@ -1,0 +1,10 @@
+[routers]
+rtr1 ansible_host=10.0.2.17
+rtr2 ansible_host=10.0.2.18
+rtr3 ansible_host=10.0.2.16
+
+[routers:vars]
+ansible_connection=local
+ansible_user=admin
+ansible_password=cisco
+
