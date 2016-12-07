@@ -1,0 +1,96 @@
+This is an example of using ansible-playbook with Jinja2 template to create and update configuration files. 
+This will create router config files but it will not deploy them.
+
+Playbook
+cisco@onepk:~/Playground/ancible_dir$ cat testpb2.yml
+---
+- hosts: localhost
+ tasks:
+   - name: Generate configuration file
+     template: src=/home/cisco/Playground/ancible_dir/router1.j2
+                 dest=/home/cisco/Playground/ancible_dir/{{item.hostname}}.txt
+     with_items:
+       - {hostname: del-rtr1, ipaddress: 1.1.1.1}
+       - {hostname: del-rtr2, ipaddress: 2.2.2.2}
+       - {hostname: del-rtr3, ipaddress: 3.3.3.3}
+
+
+
+
+Jinja2 Template
+cisco@onepk:~/Playground/ancible_dir$ cat router1.j2
+
+int loopback0
+ip address {{item.ipaddress}} 255.255.255.255
+!
+hostname {{item.hostname}}
+!
+router ospf 1
+router-id {{item.ipaddress}}
+network 0.0.0.0 0.0.0.0 area
+cisco@onepk:~/Playground/ancible_dir$
+
+
+
+Execute Playbook
+cisco@onepk:~/Playground/ancible_dir$ ansible-playbook testpb2.yml
+
+PLAY [localhost] ***************************************************************
+
+TASK [setup] *******************************************************************
+ok: [localhost]
+
+TASK [Generate configuration file] *********************************************
+ok: [localhost] => (item={u'hostname': u'del-rtr1', u'ipaddress': u'1.1.1.1'})
+ok: [localhost] => (item={u'hostname': u'del-rtr2', u'ipaddress': u'2.2.2.2'})
+ok: [localhost] => (item={u'hostname': u'del-rtr3', u'ipaddress': u'3.3.3.3'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0
+
+
+
+
+
+
+
+Config file
+cisco@onepk:~/Playground/ancible_dir$ cat del-rtr1.txt
+
+int loopback0
+ip address 1.1.1.1 255.255.255.255
+!
+hostname del-rtr1
+!
+router ospf 1
+router-id 1.1.1.1
+network 0.0.0.0 0.0.0.0 area
+
+
+Config file
+cisco@onepk:~/Playground/ancible_dir$ cat del-rtr2.txt
+
+int loopback0
+ip address 2.2.2.2 255.255.255.255
+!
+hostname del-rtr2
+!
+router ospf 1
+router-id 2.2.2.2
+network 0.0.0.0 0.0.0.0 area
+cisco@onepk:~/Playground/ancible_dir$ cat del-rtr3.txt
+
+
+Config file
+int loopback0
+ip address 3.3.3.3 255.255.255.255
+!
+hostname del-rtr3
+!
+router ospf 1
+router-id 3.3.3.3
+network 0.0.0.0 0.0.0.0 area
+cisco@onepk:~/Playground/ancible_dir$
+
+
+
