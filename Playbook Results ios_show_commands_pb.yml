@@ -1,0 +1,122 @@
+Results of running ios_show_commands_pb.yml
+
+cisco@onepk:~/Playground/ancible_dir$ ansible-playbook ios_show_commands_pb.yml
+
+PLAY [Get Router Information] **************************************************
+
+TASK [Show Commands] ***********************************************************
+ok: [rtr1]
+ok: [rtr2]
+ok: [rtr3]
+
+TASK [debug] *******************************************************************
+ok: [rtr1] => {
+   "inventory.stdout_lines": [
+       [
+           "Interface                  IP-Address      OK? Method
+Status                Protocol",
+           "GigabitEthernet0/0         10.10.20.110    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/1         10.10.30.110    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/2         10.10.10.110    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/3         10.0.2.17       YES DHCP   up
+                 up      ",
+           "GigabitEthernet0/4         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/5         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/6         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/7         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/8         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/9         unassigned      YES unset
+administratively down down    ",
+           "Loopback100                unassigned      YES unset  up
+                 up      "
+       ],
+       [
+           "System image file is \"flash0:/vios-adventerprisek9-m\""
+       ]
+   ]
+}
+ok: [rtr2] => {
+   "inventory.stdout_lines": [
+       [
+           "Interface                  IP-Address      OK? Method
+Status                Protocol",
+           "GigabitEthernet0/0         10.10.20.120    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/1         10.10.10.120    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/2         10.0.2.18       YES DHCP   up
+                 up      ",
+           "GigabitEthernet0/3         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/4         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/5         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/6         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/7         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/8         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/9         unassigned      YES unset
+administratively down down    ",
+           "Loopback100                unassigned      YES unset  up
+                 up      "
+       ],
+       [
+           "System image file is \"flash0:/vios-adventerprisek9-m\""
+       ]
+   ]
+}
+ok: [rtr3] => {
+   "inventory.stdout_lines": [
+       [
+           "Interface                  IP-Address      OK? Method
+Status                Protocol",
+           "GigabitEthernet0/0         10.10.30.130    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/1         10.10.10.130    YES NVRAM  up
+                 up      ",
+           "GigabitEthernet0/2         10.0.2.16       YES DHCP   up
+                 up      ",
+           "GigabitEthernet0/3         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/4         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/5         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/6         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/7         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/8         unassigned      YES unset
+administratively down down    ",
+           "GigabitEthernet0/9         unassigned      YES unset
+administratively down down    ",
+           "Loopback100                unassigned      YES unset  up
+                 up      "
+       ],
+       [
+           "System image file is \"flash0:/vios-adventerprisek9-m\""
+       ]
+   ]
+}
+
+PLAY RECAP *********************************************************************
+rtr1                       : ok=2    changed=0    unreachable=0    failed=0
+rtr2                       : ok=2    changed=0    unreachable=0    failed=0
+rtr3                       : ok=2    changed=0    unreachable=0    failed=0
+
+cisco@onepk:~/Playground/ancible_dir$
+
+
+
+------
