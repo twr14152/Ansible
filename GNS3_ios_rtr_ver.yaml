@@ -1,0 +1,20 @@
+---
+- hosts: ios-rtr
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: show ver
+     ios_command:
+       commands:
+         - show ver
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
+
+   - name: save output to /etc/ansible/backups
+     copy:
+       content: "{{ config.stdout[0] }}"
+       dest: "/etc/ansible/backups/show_ver_{{ inventory_hostname }}.txt"
+
