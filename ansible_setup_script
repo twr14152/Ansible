@@ -1,8 +1,0 @@
-#!/bin/bash
-
-mkdir /etc/ansible/playbooks
-mkdir /etc/ansible/backups
-
-
-cp ios_rtr_bkup.yaml /etc/ansible/playbooks/
-cat updates_for_hosts >> /etc/ansible/hosts 
