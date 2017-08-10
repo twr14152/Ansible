@@ -1,0 +1,51 @@
+---
+- hosts: r1
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: config ospf
+     ios_config:
+       commands:
+         - interface loopback 1
+         - ip address 1.1.1.1 255.255.255.255
+         - router ospf 1
+         - network 0.0.0.0 0.0.0.0 area 0
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
+
+- hosts: r2
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: config ospf
+     ios_config:
+       commands:
+         - interface loopback 1
+         - ip address 2.2.2.2 255.255.255.255
+         - router ospf 1
+         - network 0.0.0.0 0.0.0.0 area 0
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
+     
+- hosts: r3
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: config ospf
+     ios_config:
+       commands:
+         - interface loopback 0
+         - ip address 3.3.3.3 255.255.255.255
+         - router ospf 1
+         - network 0.0.0.0 0.0.0.0 area 0
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
