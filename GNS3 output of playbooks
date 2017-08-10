@@ -35,7 +35,6 @@ root@NetworkAutomation-1:/etc/ansible/playbooks#
 
 ++++++++ Adding ospf and loopback 0
 
-root@NetworkAutomation-1:/etc/ansible/playbooks# ansible-playbook ios_rtr_ospf_cfg.yaml -v
 Using /etc/ansible/ansible.cfg as config file
 
 PLAY [r1] **********************************************************************
@@ -53,7 +52,7 @@ version
  [WARNING]: argument password has been deprecated and will be removed in a
 future version
 
-changed: [r1] => {"banners": {}, "changed": true, "commands": ["interface loopback 1", "ip address 1.1.1.1 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"], "updates": ["interface loopback 1", "ip address 1.1.1.1 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"]}
+changed: [r1] => {"banners": {}, "changed": true, "commands": ["interface loopback 0", "ip address 1.1.1.1 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"], "updates": ["interface loopback 0", "ip address 1.1.1.1 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"]}
 
 PLAY [r2] **********************************************************************
 
@@ -61,7 +60,7 @@ TASK [Gathering Facts] *********************************************************
 ok: [r2]
 
 TASK [config ospf] *************************************************************
-changed: [r2] => {"banners": {}, "changed": true, "commands": ["interface loopback 1", "ip address 2.2.2.2 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"], "updates": ["interface loopback 1", "ip address 2.2.2.2 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"]}
+changed: [r2] => {"banners": {}, "changed": true, "commands": ["interface loopback 0", "ip address 2.2.2.2 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"], "updates": ["interface loopback 0", "ip address 2.2.2.2 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"]}
 
 PLAY [r3] **********************************************************************
 
@@ -69,7 +68,7 @@ TASK [Gathering Facts] *********************************************************
 ok: [r3]
 
 TASK [config ospf] *************************************************************
-changed: [r3] => {"banners": {}, "changed": true, "commands": ["interface loopback 0", "ip address 3.3.3.3 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"], "updates": ["interface loopback 0", "ip address 3.3.3.3 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0"]}
+changed: [r3] => {"banners": {}, "changed": true, "commands": ["interface loopback 0", "ip address 3.3.3.3 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"], "updates": ["interface loopback 0", "ip address 3.3.3.3 255.255.255.255", "router ospf 1", "network 0.0.0.0 0.0.0.0 area 0", "area 0 authentication message-digest"]}
 
 PLAY RECAP *********************************************************************
 r1                         : ok=2    changed=1    unreachable=0    failed=0   
