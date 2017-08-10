@@ -7,10 +7,11 @@
    - name: config ospf
      ios_config:
        commands:
-         - interface loopback 1
+         - interface loopback 0
          - ip address 1.1.1.1 255.255.255.255
          - router ospf 1
          - network 0.0.0.0 0.0.0.0 area 0
+         - area 0 authentication message-digest
        host: "{{ ansible_host }}"
        username: cisco
        password: cisco
@@ -24,10 +25,11 @@
    - name: config ospf
      ios_config:
        commands:
-         - interface loopback 1
+         - interface loopback 0
          - ip address 2.2.2.2 255.255.255.255
          - router ospf 1
          - network 0.0.0.0 0.0.0.0 area 0
+         - area 0 authentication message-digest
        host: "{{ ansible_host }}"
        username: cisco
        password: cisco
@@ -45,6 +47,7 @@
          - ip address 3.3.3.3 255.255.255.255
          - router ospf 1
          - network 0.0.0.0 0.0.0.0 area 0
+         - area 0 authentication message-digest
        host: "{{ ansible_host }}"
        username: cisco
        password: cisco
