@@ -1,0 +1,17 @@
+---
+- hosts: ios-rtr
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: config username password
+     ios_config:
+       commands:
+         - username admin password automate
+         - username admin priv 15
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
+
+   
