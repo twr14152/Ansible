@@ -7,7 +7,7 @@
    - name: config username password
      ios_config:
        commands:
-         - username admin password automate
+         - username admin secret automate
          - username admin priv 15
        host: "{{ ansible_host }}"
        username: cisco
