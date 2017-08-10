@@ -1,0 +1,17 @@
+--
+- hosts: ios-rtr
+  gather_facts: true
+  connection: local
+
+  tasks:
+   - name: config eigrp
+     ios_config:
+       commands:
+         - router eigrp 1
+         - network 192.168.10.0 0.0.0.255
+       host: "{{ ansible_host }}"
+       username: cisco
+       password: cisco
+     register: config
+
+
