@@ -4,6 +4,7 @@
   hosts: ios-rtr
   # gather facts is used by systems that present a linux os. IOS does not.
   gather_facts: no
+  # this connection local parameter is key to using this as a ntwk ctrl host
   connection: local
 
   tasks:
@@ -16,8 +17,9 @@
           - show version
           #- show ip int brief
           #- show run
-        # I see inventory_hostname specified in exampls
-        # believe this you need to change ansible.cfg to change this
+        # I see inventory_hostname specified in a lot of examples
+        # believe this requires a change ansible.cfg 
+        # not going to change at this time
         host: "{{ ansible_host }}"
         username: cisco
         password: cisco
