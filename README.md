@@ -7,6 +7,4 @@ Files starting with GNS3 represent the days work
 08-12-2017 - 
 Found the ansible training webinar videos
 Will be refining and adding files as I go.
-
-
-
+- show_version_Aug_8_2017.yaml
