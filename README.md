@@ -1,3 +1,6 @@
 # Ansible
 08-09-2017 - testing ansible on GNS3.
-Files starting with GNS3 represent most recent tests
+Files starting with GNS3 represent the days work
+08-12-2017 - Found a better source of information on how to properly utilize ansible. 
+Will be refining and adding new files as I go.
+Todays files will include todays date Aug_8_2017
