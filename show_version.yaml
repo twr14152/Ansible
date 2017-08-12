@@ -1,0 +1,23 @@
+---
+- name: show version cmd
+  hosts: ios-rtr
+  gather_facts: yes
+  connection: local
+
+  tasks:
+    - name: show version
+      ios_command: 
+        commands:
+          - show version
+        host: "{{ ansible_host }}"
+        username: cisco
+        password: cisco
+        authorize: yes
+      register: cmd_output
+      
+    - debug: var=cmd_output
+    
+    - name: save output
+      copy:
+        content: "{{ cmd_output.stdout }}"
+        dest: "/tmp/show_ver_{{ ansible_host }}.txt"
