@@ -2,7 +2,8 @@
 - name: show version cmd
   # This is where you call the host file in /etc/ansible/host
   hosts: ios-rtr
-  gather_facts: yes
+  # gather facts is used by systems that present a linux os. IOS does not.
+  gather_facts: no
   connection: local
 
   tasks:
