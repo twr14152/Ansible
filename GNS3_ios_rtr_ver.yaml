@@ -1,20 +1,32 @@
 ---
-- hosts: ios-rtr
-  gather_facts: true
+- name: show version cmd
+  # This is where you call the host file in /etc/ansible/host
+  hosts: ios-rtr
+  gather_facts: yes
   connection: local
 
   tasks:
-   - name: show ver
-     ios_command:
-       commands:
-         - show ver
-       host: "{{ ansible_host }}"
-       username: cisco
-       password: cisco
-     register: config
-
-   - name: save output to /etc/ansible/backups
-     copy:
-       content: "{{ config.stdout[0] }}"
-       dest: "/etc/ansible/backups/show_ver_{{ inventory_hostname }}.txt"
-
+    # Short description of what your doing
+    - name: show version
+    # This is a network module ansible calls
+      ios_command: 
+        commands:
+          # Put commands you want to run
+          - show version
+          #- show ip int brief
+          #- show run
+        # I see inventory_hostname specified in exampls
+        # believe this you need to change ansible.cfg to change this
+        host: "{{ ansible_host }}"
+        username: cisco
+        password: cisco
+        # This is used when cmd needs enable writes
+        authorize: yes
+      register: cmd_output
+    # debuging output  
+    - debug: var=cmd_output
+    # enable logging to /tmp/cmd_host.txt
+    - name: save output
+      copy:
+        content: "{{ cmd_output.stdout }}"
+        dest: "/tmp/show_ver_{{ ansible_host }}.txt"
