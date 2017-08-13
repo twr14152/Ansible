@@ -1,0 +1,39 @@
+---
+- name: build interfaces
+  # Name of group in hosts & group_vars/ios-rtr.yaml
+  hosts: ios-rtr
+  # Not needed for non linux front end devices
+  gather_facts: no
+  # Needed for network control device
+  connection: local
+ 
+  tasks:
+    # Short description of what your doing
+    - name: show cmds
+    # This is enables show commands
+      ios_command: 
+        commands:
+          # Put commands you want to run
+          - show ip int brief
+        # I see inventory_hostname specified in a lot of examples
+        # believe this requires a change ansible.cfg 
+        # not going to change at this time
+        host: "{{ ansible_host }}"
+        # Uses authentication creds in group_vars/ios-rtrs.yaml
+        provider: "{{ cli }}"
+        # This is used when cmd needs enable writes
+        authorize: yes
+      # This creates a tag you can call
+      register: config
+
+    - name: config cmds
+      # enables config mode
+      ios_config:
+        lines:
+          # enter interface configs
+          - description anycast address
+          - ip address 239.0.0.1 255.255.255.255 
+        # interface to apply configs to
+        parents: interface loopback 100
+        config: "{{ config.stdout[0] }}"
+        provider: "{{ cli }}"
