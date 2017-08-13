@@ -1,5 +1,5 @@
 ---
-- name: show version cmd
+- name: show cmd
   # This is where you call the host file in /etc/ansible/host
   hosts: ios-rtr
   # gather facts is used by systems that present a linux os. IOS does not.
@@ -9,7 +9,7 @@
 
   tasks:
     # Short description of what your doing
-    - name: show version
+    - name: show cmd
     # This is a network module ansible calls
       ios_command: 
         commands:
