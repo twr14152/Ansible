@@ -1,4 +1,5 @@
 ---
+# The device group in the host file
 device_os: ios-rtr
 provider: "{{ cli }}"
 
