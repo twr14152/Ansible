@@ -262,3 +262,33 @@ drwxr-xr-x 3 root root 4096 Aug 12 08:56 gns3
 
 root@NetworkAutomation-1:/tmp# cat show_ver_192.168.10.3.txt
 ["Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S7, RELEASE SOFTWARE (fc4)\nTechnical Support: http://www.********.com/techsupport\nCopyright (c) 1986-2015 by Cisco Systems, Inc.\nCompiled Wed 01-Apr-15 20:30 by prod_rel_team\n\nROM: ROMMON Emulation Microcode\nBOOTLDR: 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S7, RELEASE SOFTWARE (fc4)\n\nR3 uptime is 2 hours, 22 minutes\nSystem returned to ROM by unknown reload cause - suspect boot_data[BOOT_COUNT] 0x0, BOOT_COUNT 0, BOOTDATA 19\nSystem image file is \"tftp://255.255.255.255/unknown\"\nLast reload type: Normal Reload\nLast reload reason: Unknown reason\n\n\n\nThis product contains cryptographic features and is subject to United\nStates and local country laws governing import, export, transfer and\nuse. Delivery of Cisco cryptographic products does not imply\nthird-party authority to import, export, distribute or use encryption.\nImporters, exporters, distributors and users are responsible for\ncompliance with U.S. and local country laws. By using this product you\nagree to comply with applicable laws and regulations. If you are unable\nto comply with U.S. and local laws, return this product immediately.\n\nA summary of U.S. laws governing Cisco cryptographic products may be found at:\nhttp://www.********.com/wwl/export/crypto/tool/stqrg.html\n\nIf you require further assistance please contact us by sending email to\nexport@********.com.\n\nCisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.\nProcessor board ID 4279256517\nR7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2 Cache\n6 slot VXR midplane, Version 2.1\n\nLast reset from power-on\n\nPCI bus mb0_mb1 (Slots 0, 1, 3 and 5) has a capacity of 600 bandwidth points.\nCurrent configuration on bus mb0_mb1 has a total of 600 bandwidth points. \nThis configuration is within the PCI bus capacity and is supported. \n\nPCI bus mb2 (Slots 2, 4, 6) has a capacity of 600 bandwidth points.\nCurrent configuration on bus mb2 has a total of 0 bandwidth points \nThis configuration is within the PCI bus capacity and is supported. \n\nPlease refer to the following document \"Cisco 7200 Series Port Adaptor\nHardware Configuration Guidelines\" on Cisco.com <http://www.********.com>\nfor c7200 bandwidth points oversubscription and usage guidelines.\n\n\n3 FastEthernet interfaces\n509K bytes of NVRAM.\n\n8192K bytes of Flash internal SIMM (Sector size 256K).\nConfiguration register is 0x2102"]root@NetworkAutomation-1:/tmp# 
+
+
++++++
+
+config script output
+
+root@Automation-1:/etc/ansible/playbooks# ansible-playbook interface_config.yaml -v
+Using /etc/ansible/ansible.cfg as config file
+
+PLAY [build interfaces] ********************************************************
+
+TASK [show cmds] ***************************************************************
+ [WARNING]: argument host has been deprecated and will be removed in a future
+version
+
+ok: [r1] => {"changed": false, "stdout": ["Interface              IP-Address      OK? Method Status                Protocol\nFastEthernet0/0        192.168.10.1    YES NVRAM  up                    up      \nFastEthernet1/0        unassigned      YES NVRAM  administratively down down    \nFastEthernet2/0        unassigned      YES NVRAM  administratively down down"], "stdout_lines": [["Interface              IP-Address      OK? Method Status                Protocol", "FastEthernet0/0        192.168.10.1    YES NVRAM  up                    up      ", "FastEthernet1/0        unassigned      YES NVRAM  administratively down down    ", "FastEthernet2/0        unassigned      YES NVRAM  administratively down down"]]}
+ok: [r3] => {"changed": false, "stdout": ["Interface              IP-Address      OK? Method Status                Protocol\nFastEthernet0/0        192.168.10.3    YES NVRAM  up                    up      \nFastEthernet1/0        unassigned      YES unset  administratively down down    \nFastEthernet1/1        unassigned      YES unset  administratively down down"], "stdout_lines": [["Interface              IP-Address      OK? Method Status                Protocol", "FastEthernet0/0        192.168.10.3    YES NVRAM  up                    up      ", "FastEthernet1/0        unassigned      YES unset  administratively down down    ", "FastEthernet1/1        unassigned      YES unset  administratively down down"]]}
+ok: [r2] => {"changed": false, "stdout": ["Interface              IP-Address      OK? Method Status                Protocol\nFastEthernet0/0        192.168.10.2    YES NVRAM  up                    up      \nFastEthernet1/0        unassigned      YES unset  administratively down down    \nFastEthernet1/1        unassigned      YES unset  administratively down down"], "stdout_lines": [["Interface              IP-Address      OK? Method Status                Protocol", "FastEthernet0/0        192.168.10.2    YES NVRAM  up                    up      ", "FastEthernet1/0        unassigned      YES unset  administratively down down    ", "FastEthernet1/1        unassigned      YES unset  administratively down down"]]}
+
+TASK [config cmds] *************************************************************
+changed: [r1] => {"banners": {}, "changed": true, "commands": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"], "updates": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"]}
+changed: [r3] => {"banners": {}, "changed": true, "commands": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"], "updates": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"]}
+changed: [r2] => {"banners": {}, "changed": true, "commands": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"], "updates": ["interface loopback 100", "description anycast address", "ip address 239.0.0.1 255.255.255.255"]}
+
+PLAY RECAP *********************************************************************
+r1                         : ok=2    changed=1    unreachable=0    failed=0   
+r2                         : ok=2    changed=1    unreachable=0    failed=0   
+r3                         : ok=2    changed=1    unreachable=0    failed=0   
+
+root@NetworkAutomation-1:/etc/ansible/playbooks# 
