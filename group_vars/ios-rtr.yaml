@@ -1,0 +1,14 @@
+---
+device_os: ios-rtr
+provider: "{{ cli }}"
+
+cli:
+#  host: "{{ ios_cli_user | default(ansible_host) }}"
+#  username: "{{ ios_cli_user | default('cisco') }}"
+#  password: "{{ ios_cli_user | default('cisco') }}"
+  host: "{{  (ansible_host) }}"
+  username: "{{ 'cisco' }}"
+  password: "{{ 'cisco' }}"
+  transport: cli
+  authorize: yes
+
