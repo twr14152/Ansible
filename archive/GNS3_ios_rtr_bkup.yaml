@@ -1,6 +1,6 @@
 ---
 - hosts: ios-rtr
-  gather_facts: true
+  gather_facts: no
   connection: local
 
   tasks:
