@@ -2,7 +2,7 @@
 - name: build interfaces
   # Name of group in hosts & group_vars/ios-rtr.yaml
   hosts: ios-rtr
-  # Facts not needed to run on ios devices
+  # Not needed for an ios device
   gather_facts: no
   # Needed for network control device
   connection: local
@@ -15,10 +15,8 @@
         commands:
           # Put commands you want to run
           - show ip int brief
-        # I see inventory_hostname specified in a lot of examples
-        # believe this requires a change ansible.cfg 
-        # not going to change at this time
-        host: "{{ ansible_host }}"
+        # This is a magic or key word that works with the hostname in the hosts file
+        host: "{{ inventory_hostname }}"
         # Uses authentication creds in group_vars/ios-rtrs.yaml
         provider: "{{ cli }}"
         # This is used when cmd needs enable writes
