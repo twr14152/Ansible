@@ -21,6 +21,7 @@
         # believe this requires a change ansible.cfg 
         # not going to change at this time
         host: "{{ inventory_hostname }}"
+        # Provider takes over authentication has username and password vars
         provider: "{{ cli }}"
         #username: cisco
         #password: cisco
