@@ -20,9 +20,10 @@
         # I see inventory_hostname specified in a lot of examples
         # believe this requires a change ansible.cfg 
         # not going to change at this time
-        host: "{{ ansible_host }}"
-        username: cisco
-        password: cisco
+        host: "{{ inventory_hostname }}"
+        provider: "{{ cli }}"
+        #username: cisco
+        #password: cisco
         # This is used when cmd needs enable writes
         authorize: yes
       register: cmd_output
@@ -32,4 +33,4 @@
     - name: save output
       copy:
         content: "{{ cmd_output.stdout }}"
-        dest: "/tmp/show_ver_{{ ansible_host }}.txt"
+        dest: "/tmp/show_ver_{{ inventory_hostname }}.txt"
