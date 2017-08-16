@@ -15,9 +15,8 @@
         commands:
           # Put commands you want to run
           - show ip int brief
-        # I see inventory_hostname specified in a lot of examples
-        # believe this requires a change ansible.cfg 
-        # not going to change at this time
+       # Removed ansible_hosts from hosts file names
+       # This is a built in keyword that will search the host file hostnames
         host: "{{ inventory_hostname }}"
         # Uses authentication creds in group_vars/ios-rtrs.yaml
         provider: "{{ cli }}"
