@@ -3,7 +3,7 @@
 08/16/2017 -
 - update existing files
 - add alt_show_cmds.yaml
-- add hosts to /etc/host to get ansible working from home dir
+- add hosts to /etc/host to get dns working from home dir 
 - create new ansible.cfg and host file in home directory
 
 
