@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: show commands
+      # Alternate way of issuing show commands
+      raw: "show tech"
+
+      register: cmd_output
+
+    - debug: var=cmd_output
+
+  
