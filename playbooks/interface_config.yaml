@@ -2,7 +2,7 @@
 - name: build interfaces
   # Name of group in hosts & group_vars/ios-rtr.yaml
   hosts: ios-rtr
-  # Not needed for non linux front end devices
+  # Facts not needed to run on ios devices
   gather_facts: no
   # Needed for network control device
   connection: local
