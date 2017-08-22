@@ -1,0 +1,98 @@
+---
+- name: build interfaces
+  hosts: r1
+  gather_facts: no
+  connection: local 
+
+  tasks:
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 10.0.101.1 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 192.168.10.1 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+         
+- name: build interfaces
+  hosts: r2     
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 10.0.101.2 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 192.168.10.2 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+
+
+- name: build interfaces
+  hosts: r3     
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 10.0.101.3 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+    - ios_config:
+        lines:
+          - description configured by ansible
+          - ip address 192.168.10.3 255.255.255.0
+          - no shutdown
+        parents: interface Fastethernet1/0
+        provider: "{{ cli }}"
+
+
+- name: enable eigrp routing
+  hosts: ios-rtr
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - ios_config:
+        lines:
+          - network 10.0.101.0 0.0.0.255
+          - no auto-summary
+        parents: router eigrp 1
+        provider: "{{ cli }}"
+
+
+- name: enable ospf routing
+  hosts: ios-rtr
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - ios_config:
+        lines:
+          - network 192.168.10.0 0.0.0.255 area 0
+        parents: router ospf 1
+        provider: "{{ cli }}"
+
+
