@@ -1,0 +1,43 @@
+---
+- name: build router
+  hosts: r1
+  gather_facts: no
+  connection: local 
+
+  tasks:
+
+    - ios_template:
+        src: router_cfg.j2
+        provider: "{{ cli }}"
+    
+      with_items:
+        - {hostname: R1, ipaddress1: 192.168.10.1, ipaddress2: 10.0.101.1, ipaddress3: 1.1.1.1}
+
+- name: build router
+  hosts: r2     
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_template:
+        src: router_cfg.j2
+        provider: "{{ cli }}"
+
+      with_items:
+        - {hostname: R2, ipaddress1: 192.168.10.2, ipaddress2: 10.0.101.2, ipaddress3: 2.2.2.2}
+
+- name: build router
+  hosts: r3     
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_template:
+        src: router_cfg.j2
+        provider: "{{ cli }}"
+
+      with_items:
+        - {hostname: R3, ipaddress1: 192.168.10.3, ipaddress2: 10.0.101.3, ipaddress3: 3.3.3.3}
+
