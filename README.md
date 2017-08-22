@@ -1,5 +1,13 @@
 # Learning Ansible
 
+08/22/2017 -
+Added Playbook thats uses Jinja2 template
+- Playbook ospf_eigrp_net_template.yml
+- router_cfg.j2 router template
+- ios_config module playbook ospf_eigrp_netwk.yaml
+- ongoing updates to existing files
+
+
 08/16/2017 -
 - update existing files
 - add alt_show_cmds.yaml
