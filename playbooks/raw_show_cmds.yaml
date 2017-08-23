@@ -1,14 +1,17 @@
 ---
 - hosts: all
   gather_facts: false
+  # To run playbook issue: ansible-playbook raw_show_cmd.yml -u cisco -k
 
   tasks:
     - name: show commands
       # Alternate way of issuing show commands
-      raw: "show tech"
-
+      #raw: "show tech"
+      raw: "show ip int brief"
       register: cmd_output
 
     - debug: var=cmd_output
+
+
 
   
