@@ -1,0 +1,40 @@
+---
+- name: r4_config
+  hosts: r4
+  gather_facts: no
+  connection: local
+
+  vars:
+    cli:
+      username: admin
+      password: automate
+
+  tasks:
+    - name: build ospf for r4
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - network 10.0.1.0 0.0.0.255 area 0
+          - redistribute connected subnets
+          - redistribute bgp 65004 subnets
+        parents: router ospf 1
+
+      register: results_ospf
+
+    - debug: var=results_ospf
+
+    - name: build BGP for r4
+    # call the ios_config module
+      ios_config:
+        provider: "{{ cli }}"        
+
+        lines:
+          - network 4.4.4.4 mask 255.255.255.255
+          - neighbor 157.130.0.2 remote-as 65005
+          - redistribute connected
+          - network 1.1.1.1 mask 255.255.255.255
+        parents: router bgp 65004
+
+      register: results_bgp
+
+    - debug: var=results_bgp
