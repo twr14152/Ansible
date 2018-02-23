@@ -1,0 +1,40 @@
+---
+- name: show commands
+  # Name of group in gns3_hosts file & group_vars/ios-rtr.yaml
+  hosts: gns3-ios
+
+  # Not needed for ios routers
+  gather_facts: no
+  # Needed for network control device
+  connection: local
+ 
+  tasks:
+    # Short description of what your doing
+    - name: show commands
+    # This is enables show commands
+      ios_command: 
+        commands:
+          # Put commands you want to run
+          #- show ip int brief
+          #- show version
+          #- show run
+          - show ip ospf neighbor
+          #- show ip route
+        # uses a file in group_var/gns3-ios.yaml for authentication parameters
+        provider: "{{ cli }}"
+        # -or-
+        #username: admin
+        #password: automate
+        # -or-
+        # alternative you can add username and password when issuing command
+        # ansible-playbook show_commands.yaml -u admin -k
+
+      # capture output in variable called cmds_output
+      register: cmds_output
+    - debug: var=cmds_output
+    # alternatively you could just enter a -v when running the ansible-playbook
+    
+    - name: Save output to a file
+      copy:
+        content="{{ cmds_output.stdout[0] }}"
+        dest="./test_dump/cmds_output_{{ inventory_hostname }}.txt"
