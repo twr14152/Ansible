@@ -1,0 +1,44 @@
+---
+- name: Router Config
+  hosts: r1
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - template:
+        src: "./template/generic_router.j2"
+        dest: "./template/r1.cfg"
+
+      with_items:
+        - {hostname: r1, ipaddress1: 10.0.0.1, ipaddress2: 10.0.1.1, ipaddress3: 1.1.1.1}
+
+- name: Router Config
+  hosts: r2
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - template:
+        src: "./template/generic_router.j2"
+        dest: "./template/r2.cfg"
+ 
+      with_items:
+        - {hostname: r2, ipaddress1: 10.0.0.2, ipaddress2: 10.0.1.2, ipaddress3: 2.2.2.2}
+
+- name: Router Config
+  hosts: r3
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - template:
+        src: "./template/generic_router.j2"
+        dest: "./template/r3.cfg"
+ 
+      with_items:
+        - {hostname: r3, ipaddress1: 10.0.0.3, ipaddress2: 10.0.1.3, ipaddress3: 3.3.3.3} 
+
+
