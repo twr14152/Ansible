@@ -1,3 +1,4 @@
+
 hostname {{item.hostname}}
 
 interface loopback 0
@@ -16,3 +17,4 @@ interface FastEthernet1/0
 router ospf 1
  router-id {{item.ipaddress3}}
  network 10.0.1.0 0.0.0.255 area 0
+ redistribute connected subnets
