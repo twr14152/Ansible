@@ -1,0 +1,33 @@
+todd@ubuntu:~/automation$ tree
+.
+├── ansible_stuff
+│   ├── ansible.cfg
+│   ├── gns3_hosts
+│   ├── group_vars
+│   │   └── gns3-ios.yaml
+│   ├── make_rtr_templates.yaml
+│   ├── pb_make_rtr_templates.retry
+│   ├── pb_make_rtr_templates.yaml
+│   ├── push_template_cfg_2_rtrs.yaml
+│   ├── rtr_build_genric_temp.retry
+│   ├── rtr_build_genric_temp.yaml
+│   ├── show_commands.retry
+│   ├── show_commands.yaml
+│   ├── template
+│   │   ├── generic_router.j2
+│   │   ├── r1.cfg
+│   │   ├── r1.j2
+│   │   ├── r2.cfg
+│   │   ├── r2.j2
+│   │   ├── r3.cfg
+│   │   ├── r3.j2
+│   │   └── r4.j2
+│   └── test_dump
+│       ├── cmds_output_r1.txt
+│       ├── cmds_output_r2.txt
+│       └── cmds_output_r3.txt
+├── netmiko_stuff
+└── netwk_script.sh
+
+5 directories, 23 files
+todd@ubuntu:~/automation$ 
