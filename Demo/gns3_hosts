@@ -1,0 +1,9 @@
+[gns3-ios]
+r1
+r2
+r3
+r4
+
+#This is a one off where ubuntu and ansible are not in sync and ansible is looking for python2
+[gns3-ios:vars]
+ansible_python_interpreter=/usr/bin/python3
