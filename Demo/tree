@@ -2,16 +2,27 @@ todd@ubuntu:~/automation$ tree
 .
 ├── ansible_stuff
 │   ├── ansible.cfg
+│   ├── archive_folder
+│   │   ├── all_in_one_playbook.yaml
+│   │   ├── build_loopback.yaml
+│   │   ├── pb_make_rtr_templates.yaml
+│   │   ├── r4_interface_configs.yaml
+│   │   └── rtr_build_genric_temp.yaml
+│   ├── config_archives
+│   │   ├── r1.txt
+│   │   ├── r2.txt
+│   │   ├── r3.txt
+│   │   ├── r4.txt
+│   │   └── r5.txt
+│   ├── config_bkup.yaml
 │   ├── gns3_hosts
 │   ├── group_vars
 │   │   └── gns3-ios.yaml
 │   ├── make_rtr_templates.yaml
-│   ├── pb_make_rtr_templates.retry
-│   ├── pb_make_rtr_templates.yaml
 │   ├── push_template_cfg_2_rtrs.yaml
-│   ├── rtr_build_genric_temp.retry
-│   ├── rtr_build_genric_temp.yaml
-│   ├── show_commands.retry
+│   ├── r4_intf_cfgs.yaml
+│   ├── r4_routing_configs.yaml
+│   ├── routing_playbook.yaml
 │   ├── show_commands.yaml
 │   ├── template
 │   │   ├── generic_router.j2
@@ -25,9 +36,9 @@ todd@ubuntu:~/automation$ tree
 │   └── test_dump
 │       ├── cmds_output_r1.txt
 │       ├── cmds_output_r2.txt
-│       └── cmds_output_r3.txt
+│       ├── cmds_output_r3.txt
+│       └── cmds_output_r4.txt
 ├── netmiko_stuff
 └── netwk_script.sh
 
-5 directories, 23 files
-todd@ubuntu:~/automation$ 
+7 directories, 33 files
