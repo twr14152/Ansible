@@ -1,0 +1,18 @@
+hostname {{item.hostname}}
+
+interface loopback 0
+ ip address {{item.ipaddress3}} 255.255.255.255
+
+interface FastEthernet0/0
+ ip address {{item.ipaddress1}} 255.255.255.0
+ description configured by ansible templates
+ no shut
+
+interface FastEthernet1/0
+ ip address {{item.ipaddress2}} 255.255.255.0
+ description configured by ansible templates
+ no shut
+
+router ospf 1
+ router-id {{item.ipaddress3}}
+ network 10.0.1.0 0.0.0.255 area 0
