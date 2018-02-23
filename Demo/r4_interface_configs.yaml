@@ -1,5 +1,5 @@
 ---
-- name: r4_config
+- name: r4_interface_configs
   hosts: r4
   gather_facts: no
   connection: local
