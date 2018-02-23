@@ -7,7 +7,6 @@
   tasks:
 
     - ios_config:
-        #src: /home/todd/automation/ansible_stuff/template/generic_router.j2
         src: ./template/generic_router.j2
         provider: "{{ cli }}"
 
@@ -22,7 +21,6 @@
   tasks:
 
     - ios_config:
-        #src: /home/todd/automation/ansible_stuff/template/generic_router.j2 
         src: ./template/generic_router.j2
         provider: "{{ cli }}"
  
@@ -37,7 +35,6 @@
   tasks:
 
     - ios_config:
-        #src: /home/todd/automation/ansible_stuff/template/generic_router.j2
         src: ./template/generic_router.j2
         provider: "{{ cli }}"
  
