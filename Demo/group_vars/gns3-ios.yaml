@@ -1,0 +1,10 @@
+---
+device_os: gns3-ios
+provider: "{{ cli }}"
+ 
+cli:
+  host: "{{ (inventory_hostname) }}"
+  username: "{{ ios_cli_user | default('admin') }}"
+  password: "{{ ios_cli_pass | default('automate') }}"
+  authorize: yes
+
