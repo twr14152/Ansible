@@ -1,0 +1,48 @@
+---
+- name: r4_config
+  hosts: r4
+  gather_facts: no
+  connection: local
+
+  vars:
+    cli:
+      username: admin
+      password: automate
+
+  tasks:
+    - name: build loopback for r4
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - description router_id
+          - ip address 4.4.4.4 255.255.255.255
+        parents: interface loopback0
+      register: results_loop
+
+    - debug: var=results_loop
+
+
+    - name: build wan interface for r4
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - description wan
+          - ip address 157.130.0.1 255.255.255.252
+          - no shut
+        parents: interface fastethernet1/0
+
+      register: results_wan
+
+    - debug: var=results_wan
+
+    - name: build lan for r4
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - description lan 
+          - ip address 10.0.1.4 255.255.255.0
+          - no shut
+        parents: interface fastethernet 0/0
+      register: results_lan
+
+    - debug: var=results_lan
