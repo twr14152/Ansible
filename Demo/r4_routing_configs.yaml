@@ -18,23 +18,23 @@
           - redistribute connected subnets
           - redistribute bgp 65004 subnets
         parents: router ospf 1
-
       register: results_ospf
-
     - debug: var=results_ospf
 
     - name: build BGP for r4
-    # call the ios_config module
       ios_config:
         provider: "{{ cli }}"        
-
         lines:
           - network 4.4.4.4 mask 255.255.255.255
+          - no neighbor 157.130.0.2 description to R5
           - neighbor 157.130.0.2 remote-as 65005
           - redistribute connected
           - network 1.1.1.1 mask 255.255.255.255
         parents: router bgp 65004
-
       register: results_bgp
-
     - debug: var=results_bgp
+  
+    - name: save running to startup when modified
+      ios_config:
+        provider: "{{ cli }}"
+        save_when: modified 
