@@ -1,0 +1,57 @@
+---
+- name: r5_interface_configs
+  hosts: r5
+  gather_facts: no
+  connection: local
+
+  vars:
+    cli:
+      username: admin
+      password: automate
+
+  tasks:
+    - name: build loopback for r5
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - description router_id
+          - ip address 5.5.5.5 255.255.255.255
+        parents: interface loopback0
+      register: results_loop
+
+    - debug: var=results_loop
+
+
+    - name: build wan interface for r5
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - description wan
+          - ip address 157.130.0.2 255.255.255.252
+          - no shut
+        parents: interface fastethernet1/0
+
+      register: results_wan
+
+    - debug: var=results_wan
+
+
+    - name: build BGP for r5
+      ios_config:
+        provider: "{{ cli }}"        
+        lines:
+          - network 5.5.5.5 mask 255.255.255.255
+          - neighbor 157.130.0.1 remote-as 65004
+          - redistribute connected
+        parents: router bgp 65005
+      register: results_bgp
+    - debug: var=results_bgp
+  
+    - name: save running to startup when modified
+      ios_config:
+        provider: "{{ cli }}"
+        save_when: modified 
+
+      register: bgp_routing
+
+    - debug: var=bgp_routing
