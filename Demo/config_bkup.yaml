@@ -1,0 +1,20 @@
+---
+- name: archive running config
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: show run command
+      ios_command:
+        provider: "{{ cli }}"
+        authorize: yes
+        commands:
+          - show run
+
+      register: print_output
+
+    - debug: var=print_output.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output.stdout[0] }}" dest="./config_archives/{{ inventory_hostname }}.txt"
