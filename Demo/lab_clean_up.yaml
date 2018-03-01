@@ -1,0 +1,59 @@
+---
+- name: cleanup r1
+  hosts: r1
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_config:
+        src: ./template/reset_template.j2
+        provider: "{{ cli }}"
+
+
+- name: cleanup r2
+  hosts: r2
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_config:
+        src: ./template/reset_template.j2
+        provider: "{{ cli }}"
+ 
+
+- name: cleanup r3
+  hosts: r3
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_config:
+        src: ./template/reset_template.j2
+        provider: "{{ cli }}"
+ 
+
+- name: cleanup r4
+  hosts: r4
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - ios_config:
+        src: ./template/reset_template_r4.j2
+        provider: "{{ cli }}"
+
+
+- name: cleanup r5
+  hosts: r5
+  gather_facts: no
+  connection: local
+  
+  tasks:
+
+    - ios_config:
+        src: ./template/reset_template_r5.j2
+        provider: "{{ cli }}"
