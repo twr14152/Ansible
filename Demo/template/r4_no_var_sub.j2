@@ -1,0 +1,125 @@
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$48/c$aYU97/gzy88/bjnCg46JE.
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name test.com
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+username ***** privilege 15 password 0 ******
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+ip ssh version 2
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description router_id
+ ip address 4.4.4.4 255.255.255.255
+!
+interface FastEthernet0/0
+ description lan
+ ip address 10.0.1.4 255.255.255.0
+ duplex full
+!
+interface FastEthernet1/0
+ description wan
+ ip address 157.130.0.1 255.255.255.252
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ ip address 10.0.0.4 255.255.255.0
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+router ospf 1
+ redistribute connected subnets
+ redistribute bgp 65004 subnets
+ network 10.0.1.0 0.0.0.255 area 0
+!
+router bgp 65004
+ bgp log-neighbor-changes
+ network 1.1.1.1 mask 255.255.255.255
+ network 4.4.4.4 mask 255.255.255.255
+ redistribute connected
+ neighbor 157.130.0.2 remote-as 65005
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login local
+line vty 5 15
+ login local
+!
+!
+end
