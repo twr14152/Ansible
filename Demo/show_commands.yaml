@@ -17,9 +17,10 @@
           # Put commands you want to run
           #- show ip int brief
           #- show version
-          #- show run
-          - show ip ospf neighbor
+          - show run
+          #- show ip ospf neighbor
           #- show ip route
+          #- show ip bgp summ
         # uses a file in group_var/gns3-ios.yaml for authentication parameters
         provider: "{{ cli }}"
         # -or-
@@ -31,10 +32,12 @@
 
       # capture output in variable called cmds_output
       register: cmds_output
-    - debug: var=cmds_output
+    - debug: var=cmds_output.stdout_lines
     # alternatively you could just enter a -v when running the ansible-playbook
     
-    - name: Save output to a file
-      copy:
-        content="{{ cmds_output.stdout[0] }}"
-        dest="./test_dump/cmds_output_{{ inventory_hostname }}.txt"
+    #- name: Save output of command to a file
+    #  copy:
+    #    content="{{ cmds_output.stdout[0] }}"
+    #    dest="./test_dump/cmds_output_{{ inventory_hostname }}.txt"
+      
+
