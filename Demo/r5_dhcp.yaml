@@ -1,0 +1,39 @@
+---
+- name: Setup R5 as a DHCP Server
+  hosts: r5
+  gather_facts: no
+  connection: local
+
+  vars:
+    cli:
+      username: admin
+      password: automate
+
+  tasks:
+    - name: build dhcp pool
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - network 200.0.0.0 255.255.255.0
+          - default-router 200.0.0.1
+        parents: ip dhcp pool host_pool
+      register: pool
+    - debug: var=pool
+
+    - name: exclusion from pool
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - ip dhcp excluded-address 200.0.0.1 200.0.0.10
+      
+    - name: Lan interface fa1/1
+      ios_config:
+        provider: "{{ cli }}"
+        lines:
+          - ip address 200.0.0.1 255.255.255.0
+          - description lan interface
+          - no shut
+        parents: interface fastethernet1/1
+      register: lan_config
+       
+    - debug: var=lan_config
