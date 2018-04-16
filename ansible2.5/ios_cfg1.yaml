@@ -1,5 +1,5 @@
 ---
-- name: ios config
+- name: ios_config
   hosts: all
   gather_facts: false
   connection: network_cli
