@@ -1,5 +1,5 @@
 ---
-- name: show commands
+- name: ios config
   hosts: all
   gather_facts: false
   connection: network_cli
