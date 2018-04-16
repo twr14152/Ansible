@@ -1,0 +1,32 @@
+---
+- name: show commands
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: show commands
+      ios_command:
+        commands:
+          #- sh run 
+          - show version
+          - show ip interface brief
+          #- show interface description
+
+      register: show_cmd_output1
+
+    - debug: var=show_cmd_output1
+
+    - name: show commands
+      ios_command:
+        commands:
+          #- sh run
+          - show version
+          - show ip interface brief
+          #- show interface description
+
+      register: show_cmd_output2
+    # Notice the difference between the two debugs
+    # The .stdout_lines looks a lot cleaner with some show commands
+    - debug: var=show_cmd_output2.stdout_lines
