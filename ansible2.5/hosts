@@ -1,0 +1,6 @@
+[cisco]
+rtr ansible_network_os=ios
+
+
+[cisco:vars]
+ansible_python_interpreter=/usr/bin/python3
