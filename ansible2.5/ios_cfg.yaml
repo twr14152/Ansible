@@ -1,0 +1,17 @@
+---
+- name: show commands
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: ios_config
+      ios_config:
+        parents: interface loopback 0
+        lines:
+          - description test_ansible2.5
+
+
+      register: config_output
+    - debug: var=config_output
