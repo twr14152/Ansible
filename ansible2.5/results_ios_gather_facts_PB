@@ -39,3 +39,4 @@ r4                         : ok=3    changed=1    unreachable=0    failed=0
 (lab-env) todd@ubuntu:~/automation/ansible_stuff/demo/lab-env/ansible2.5_stuff$ cat script_results/r4_get_facts.txt 
 ('R4', 'tftp://255.255.255.255/unknown')(lab-env) todd@ubuntu:~/automation/ansible_stuff/demo/lab-env/ansible2.5_stuff$ vi ios_get_facts.yaml 
 (lab-env) todd@ubuntu:~/automation/ansible_stuff/demo/lab-env/ansible2.5_stuff$ 
+
