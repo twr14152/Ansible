@@ -19,6 +19,6 @@
 
     - name: save output to a file
       copy:
-        # copy the value after the var= to copy the output into file
+        # copy the value after the debug: var= to the content: "{{ <here> }}"
         content: "{{ config_facts.ansible_facts.ansible_net_hostname,config_facts.ansible_facts.ansible_net_image }}"
         dest: "./script_results/{{ inventory_hostname }}_get_facts.txt"
