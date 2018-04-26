@@ -14,8 +14,9 @@
 
 
       register: config_output
-    # to see only the commands that are entered in the output enter the debug statement below
+    # to see only the commands that were entered by the playbook
     - debug: var=config_output.commands
+    # to see all output
     - debug: var=config_output
 
     - name: routing_config
@@ -25,5 +26,7 @@
           - passive-interface loopback0
 
       register: ospf_conf
+    # to see only the ospf commands that were entered  
     - debug: var=ospf_conf.commands
+    # to see all output 
     - debug: var=ospf_conf
