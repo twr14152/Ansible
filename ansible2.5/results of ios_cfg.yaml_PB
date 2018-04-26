@@ -1,0 +1,198 @@
+(lab-env) todd@ubuntu:~/automation/ansible_stuff/demo/lab-env/ansible2.5_stuff$ ansible-playbook ios_cfg.yaml -u cisco -k 
+SSH password: 
+
+PLAY [Configuration commands] ******************************************************************************************************************************************************************************
+
+TASK [interface_config] ************************************************************************************************************************************************************************************
+changed: [r1]
+changed: [r2]
+changed: [r4]
+changed: [r3]
+
+TASK [debug] ***********************************************************************************************************************************************************************************************
+ok: [r2] => {
+    "config_output.commands": [
+        "interface loopback 0",
+        "description test_ansible2.5"
+    ]
+}
+ok: [r1] => {
+    "config_output.commands": [
+        "interface loopback 0",
+        "description test_ansible2.5"
+    ]
+}
+ok: [r3] => {
+    "config_output.commands": [
+        "interface loopback 0",
+        "description test_ansible2.5"
+    ]
+}
+ok: [r4] => {
+    "config_output.commands": [
+        "interface loopback 0",
+        "description test_ansible2.5"
+    ]
+}
+
+TASK [debug] ***********************************************************************************************************************************************************************************************
+ok: [r1] => {
+    "config_output": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ],
+        "failed": false,
+        "updates": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ]
+    }
+}
+ok: [r2] => {
+    "config_output": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ],
+        "failed": false,
+        "updates": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ]
+    }
+}
+ok: [r4] => {
+    "config_output": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ],
+        "failed": false,
+        "updates": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ]
+    }
+}
+ok: [r3] => {
+    "config_output": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ],
+        "failed": false,
+        "updates": [
+            "interface loopback 0",
+            "description test_ansible2.5"
+        ]
+    }
+}
+
+TASK [routing_config] **************************************************************************************************************************************************************************************
+changed: [r1]
+changed: [r4]
+changed: [r2]
+changed: [r3]
+
+TASK [debug] ***********************************************************************************************************************************************************************************************
+ok: [r1] => {
+    "ospf_conf.commands": [
+        "router ospf 1",
+        "passive-interface loopback0"
+    ]
+}
+ok: [r3] => {
+    "ospf_conf.commands": [
+        "router ospf 1",
+        "passive-interface loopback0"
+    ]
+}
+ok: [r2] => {
+    "ospf_conf.commands": [
+        "router ospf 1",
+        "passive-interface loopback0"
+    ]
+}
+ok: [r4] => {
+    "ospf_conf.commands": [
+        "router ospf 1",
+        "passive-interface loopback0"
+    ]
+}
+
+TASK [debug] ***********************************************************************************************************************************************************************************************
+ok: [r1] => {
+    "ospf_conf": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ],
+        "failed": false,
+        "updates": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ]
+    }
+}
+ok: [r2] => {
+    "ospf_conf": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ],
+        "failed": false,
+        "updates": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ]
+    }
+}
+ok: [r3] => {
+    "ospf_conf": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ],
+        "failed": false,
+        "updates": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ]
+    }
+}
+ok: [r4] => {
+    "ospf_conf": {
+        "banners": {},
+        "changed": true,
+        "commands": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ],
+        "failed": false,
+        "updates": [
+            "router ospf 1",
+            "passive-interface loopback0"
+        ]
+    }
+}
+
+PLAY RECAP *************************************************************************************************************************************************************************************************
+r1                         : ok=6    changed=2    unreachable=0    failed=0   
+r2                         : ok=6    changed=2    unreachable=0    failed=0   
+r3                         : ok=6    changed=2    unreachable=0    failed=0   
+r4                         : ok=6    changed=2    unreachable=0    failed=0 
