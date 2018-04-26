@@ -1,0 +1,24 @@
+---
+- name: show_commands
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+  become: yes
+
+  tasks:
+    - name: gather_facts
+      ios_facts:
+        gather_subset:
+          - config
+
+      register: config_facts
+      
+    # By using the var.ansible_facts.dict_key format we can pull out the data we want from the variable
+    # Use the comma to seperate the data if you want more than one value out of the dictionary
+    - debug: var=config_facts.ansible_facts.ansible_net_hostname,config_facts.ansible_facts.ansible_net_image
+
+    - name: save output to a file
+      copy:
+        # copy the value after the var= to copy the output into file
+        content: "{{ config_facts.ansible_facts.ansible_net_hostname,config_facts.ansible_facts.ansible_net_image }}"
+        dest: "./script_results/{{ inventory_hostname }}_get_facts.txt"
