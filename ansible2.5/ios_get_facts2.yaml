@@ -1,0 +1,21 @@
+---
+- name: show commands
+  hosts: all
+  gather_facts: false
+  # Using group_vars/ios_rtrs.yaml for authentication and transport variables
+
+  tasks:
+    - name: gather_facts
+      ios_facts:
+        gather_subset:
+          - config
+
+      register: config_facts
+      
+    - debug: var=config_facts.ansible_facts.ansible_net_hostname,config_facts.ansible_facts.ansible_net_version
+
+    - name: save output to a file
+      copy:
+        content: "{{ config_facts.ansible_facts.ansible_net_hostname,config_facts.ansible_facts.ansible_net_version }}" 
+        dest: "./script_results/{{ inventory_hostname }}_get_facts.txt"
+     
