@@ -1,0 +1,28 @@
+---
+- name: Configuration commands
+  hosts: all
+  gather_facts: false
+  # Authentication is being done in group_vars/ios_rtrs.yaml
+
+  tasks:
+    - name: interface_config
+      ios_config:
+        parents: interface loopback 0
+        lines:
+          - description test_ansible2.5
+
+
+      register: config_output
+    # to see only the commands that are entered in the output enter the debug statement below
+    - debug: var=config_output.commands
+    - debug: var=config_output
+
+    - name: routing_config
+      ios_config:
+        parents: router ospf 1
+        lines:
+          - passive-interface loopback0
+
+      register: ospf_conf
+    - debug: var=ospf_conf.commands
+    - debug: var=ospf_conf
