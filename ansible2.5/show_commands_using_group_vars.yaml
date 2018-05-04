@@ -1,0 +1,25 @@
+---
+- name: show commands
+  hosts: all
+  gather_facts: false
+  # This script is using group_vars/ios_rtrs.yaml for authentication parameters
+
+  tasks:
+    - name: show commands
+      ios_command:
+        commands:
+#          - show version | inc Version
+#          - show ip interface brief
+           - sh run
+      register: show_cmd_output
+    
+    - debug: var=show_cmd_output #.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ show_cmd_output.stdout[0] }}" dest="./script_results/{{ inventory_hostname }}.txt"
+
+
+#    - name: save output to backups/
+#      copy:
+#        content: "{{ config.stdout[0] }}"
+#        dest: "backups/show_run_{{ inventory_hostname }}.txt"
