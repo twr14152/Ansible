@@ -1,0 +1,30 @@
+[rtrs]
+r1 ansible_network_os=ios
+r2 ansible_network_os=ios
+r3 ansible_network_os=ios
+r4 ansible_network_os=ios
+r5 ansible_network_os=ios
+r6 ansible_network_os=ios
+r7 ansible_network_os=ios
+r8 ansible_network_os=ios
+r9 ansible_network_os=ios
+r10 ansible_network_os=ios
+
+[core-rtrs]
+r1 ansible_network_os=ios 
+r2 ansible_network_os=ios 
+
+[distribution-rtrs]
+r3 ansible_network_os=ios
+r4 ansible_network_os=ios
+r5 ansible_network_os=ios
+r6 ansible_network_os=ios
+
+[access-rtrs]
+r7 ansible_network_os=ios
+r8 ansible_network_os=ios
+r9 ansible_network_os=ios
+r10 ansible_network_os=ios
+
+[rtrs:vars]
+ansible_python_interpreter=/usr/bin/python3
