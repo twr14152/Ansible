@@ -1,0 +1,24 @@
+# this template is used to build bgp neighors
+#
+!
+interface loopback 0
+ description ansible_test
+ ip address {{ item.loopback_ip }} 255.255.255.255
+!
+!
+router bgp {{ item.asn }}
+ bgp router-id {{ item.loopback_ip }}
+ network {{ item.loopback_ip }} mask 255.255.255.255
+ neighbor {{ item.neighbor_address_1 }} remote {{ item.remote_as1 }}
+ neighbor {{ item.neighbor_address_1 }} timers 1 3
+ neighbor {{ item.neighbor_address_1 }} password {{ item.password }}
+ neighbor {{ item.neighbor_address_1 }} update-source loopback0
+ neighbor {{ item.neighbor_address_1 }} advertisement-interval 1
+ neighbor {{ item.neighbor_address_2 }} remote {{ item.remote_as2 }}
+ neighbor {{ item.neighbor_address_2 }} timers 1 3
+ neighbor {{ item.neighbor_address_2 }} password {{ item.password }}
+ neighbor {{ item.neighbor_address_2 }} advertisement-interval 1
+ neighbor {{ item.neighbor_address_3 }} remote {{ item.remote_as3 }}
+ neighbor {{ item.neighbor_address_3 }} timers 1 3
+ neighbor {{ item.neighbor_address_3 }} password {{ item.password }}
+ neighbor {{ item.neighbor_address_3 }} advertisement-interval 1
