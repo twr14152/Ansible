@@ -1,0 +1,9 @@
+---
+item:
+  asn: 8
+  loopback_ip: 8.8.8.8
+  neighbor_address: 157.130.0.14
+  remote_as: 4
+  password: test_pass
+  neighbor_address2: 157.130.0.10
+  remote_as2: 3
