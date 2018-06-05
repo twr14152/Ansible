@@ -1,0 +1,3 @@
+---
+- name: Core layer BGP config
+  template: src=bgp_neighbor_core.j2 dest=./files/{{inventory_hostname}}_bgp_neighbor_core
