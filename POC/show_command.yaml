@@ -1,0 +1,21 @@
+---
+- name: Exec commands
+  hosts: all
+  gather_facts: false
+  connection: local
+
+
+  tasks:
+    - name: exec commands
+      ios_command:
+        commands:
+          #- show run
+          - show ip bgp summ
+          #- show ip route summ
+      register: print_output1
+
+    - debug: var=print_output1.stdout_lines
+
+    #- name: save output to a file
+    #  copy: content="{{ print_output1.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_running_cfg.txt"
+
