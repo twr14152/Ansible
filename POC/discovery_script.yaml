@@ -1,0 +1,56 @@
+---
+- name: Network device discovery
+  hosts: all
+  gather_facts: false
+  connection: local
+
+
+  tasks:
+    - name: show run command
+      ios_command:
+        commands:
+          - show run
+
+      register: print_output1
+
+    - debug: var=print_output1.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output1.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_running_cfg.txt"
+
+
+    - name: show cdp neighbor
+      ios_command:
+        commands:
+          - show cdp neighbor
+
+      register: print_output2
+
+    - debug: var=print_output2.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output2.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_show_cdp_nei.txt"
+
+    - name: show version
+      ios_command:
+        commands:
+          - show version
+
+      register: print_output3
+
+    - debug: var=print_output3.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output3.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_show_version.txt"
+
+    - name: show ip interface brief
+      ios_command:
+        commands:
+          - show ip int brief
+
+      register: print_output4
+
+    - debug: var=print_output4.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output4.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_interfaces.txt"
