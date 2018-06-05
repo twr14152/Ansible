@@ -1,0 +1,147 @@
+---
+- name: Push Configs to routers
+  hosts: core-rtrs, distribution-rtrs, access-rtrs
+  gather_facts: no
+  connection: local 
+
+  tasks:
+    - name: NetMgmt Configs
+      ios_config:
+        src: ./files/mgmt.j2
+     
+      register: output_netmgmt
+    - debug: var=output_metmgmt
+
+
+- name: Access Routers BGP config
+  hosts: r7
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r7
+      ios_config:
+        src: ./files/r7_bgp_neighbor
+
+      register: output_r7
+    - debug: var=output_r7
+
+- name: Access Routers BGP config
+  hosts: r8
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r8
+      ios_config:
+        src: ./files/r8_bgp_neighbor
+
+      register: output_r8
+    - debug: var=output_r8
+
+
+- name: Access Routers BGP config
+  hosts: r9
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r9
+      ios_config:
+        src: ./files/r9_bgp_neighbor
+
+      register: output_r9
+    - debug: var=output_r9
+
+- name: Access Routers BGP config
+  hosts: r10
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r10
+      ios_config:
+        src: ./files/r10_bgp_neighbor
+
+      register: output_r10
+    - debug: var=output_r10
+
+
+- name: Core BGP Routing
+  hosts: r1
+  gather_facts: no
+  connection: local    
+
+  tasks:
+    - name: r1
+      ios_config:
+        src: ./files/r1_bgp_neighbor_core
+
+      register: output_r1
+    - debug: var=output_r1
+
+- name: Core BGP Routing
+  hosts: r2
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r2
+      ios_config:
+        src: ./files/r2_bgp_neighbor_core
+
+      register: output_r2
+    - debug: var=output_r2
+
+- name: Distribution BGP routing
+  hosts: r3
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r3
+      ios_config: 
+        src: ./files/r3_bgp_neighbor_dist
+
+      register: output_r3
+    - debug: var=output_r3
+
+- name: Distribution BGP routing
+  hosts: r4
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r4
+      ios_config:
+        src: ./files/r4_bgp_neighbor_dist
+
+      register: output_r4
+    - debug: var=output_r4
+
+- name: Distribution BGP routing
+  hosts: r5
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r5
+      ios_config:
+        src: ./files/r5_bgp_neighbor_dist
+
+      register: output_r5
+    - debug: var=output_r5
+
+- name: Distribution BGP routing
+  hosts: r6
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r6
+      ios_config:
+        src: ./files/r6_bgp_neighbor_dist
+
+      register: output_r6
+    - debug: var=output_r6
+
