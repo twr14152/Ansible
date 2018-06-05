@@ -1,0 +1,90 @@
+---
+- hosts: core-rtrs, distribution-rtrs, access-rtrs
+  gather_facts: false
+  connection: local
+  roles:
+    - management
+
+- hosts: r7
+  gather_facts: false
+  connection: local
+  vars_files: 
+  - host_vars/r7
+  roles:
+    - routing
+
+- hosts: r8
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r8
+  roles:
+    - routing
+
+- hosts: r9
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r9
+  roles:
+    - routing
+
+- hosts: r10
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r10
+  roles:
+    - routing
+
+
+- hosts: r1
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r1
+  roles:
+    - core_routing
+
+- hosts: r2
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r2
+  roles:
+    - core_routing
+
+
+- hosts: r3
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r3
+  roles:
+    - dist_routing
+
+
+- hosts: r4
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r4
+  roles:
+    - dist_routing
+
+- hosts: r5
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r5
+  roles:
+    - dist_routing
+
+
+- hosts: r6
+  gather_facts: false
+  connection: local
+  vars_files:
+  - host_vars/r6
+  roles:
+    - dist_routing
