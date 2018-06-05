@@ -1,0 +1,8 @@
+route-map secondary-path permit 10
+  match ip address 10
+  set as-path prepend {{ item.asn }} {{ item.asn }} {{ item.asn }}
+
+access-list 10 permit {{ item.loopback_ip }} 0.0.0.0
+
+router bgp {{ item.asn }}
+  neighbor {{ item.neighbor_address2 }} route-map secondary-path out
