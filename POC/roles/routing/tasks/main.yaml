@@ -1,0 +1,3 @@
+---
+- name: Generate BGP configuration
+  template: src=bgp_neighbor.j2  dest=./files/{{inventory_hostname}}_bgp_neighbor
