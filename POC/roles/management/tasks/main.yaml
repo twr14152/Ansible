@@ -1,0 +1,3 @@
+---
+- name: Generate management config
+  template: src=mgmt.j2 dest=/home/todd/automation/ansible_stuff/demo/lab-env/ansible2.5_stuff/POC/files
