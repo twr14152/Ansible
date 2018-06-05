@@ -1,0 +1,9 @@
+---
+item:
+  asn: 10
+  loopback_ip: 10.10.10.10
+  neighbor_address: 157.130.1.14
+  remote_as: 6
+  password: test_pass
+  neighbor_address2: 157.130.1.10
+  remote_as2: 5
