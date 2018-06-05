@@ -26,6 +26,20 @@
       register: output_r7
     - debug: var=output_r7
 
+- name: Access Routers BGP PBR config
+  hosts: r7
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r7
+      ios_config:
+        src: ./files/r7_pbr
+
+      register: output_r7
+    - debug: var=output_r7
+
+
 - name: Access Routers BGP config
   hosts: r8
   gather_facts: no
@@ -39,6 +53,18 @@
       register: output_r8
     - debug: var=output_r8
 
+- name: Access Routers BGP PBR config
+  hosts: r8
+  gather_facts: no
+  connection: local
+
+  tasks:
+   - name: r8
+     ios_config:
+       src: ./files/r8_pbr
+
+     register: output_r8
+   - debug: var=output_r8
 
 - name: Access Routers BGP config
   hosts: r9
@@ -49,6 +75,20 @@
     - name: r9
       ios_config:
         src: ./files/r9_bgp_neighbor
+
+      register: output_r9
+    - debug: var=output_r9
+
+
+- name: Access Routers BGP PBR config
+  hosts: r9
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: r9
+      ios_config:
+        src: ./files/r9_pbr
 
       register: output_r9
     - debug: var=output_r9
@@ -65,6 +105,20 @@
 
       register: output_r10
     - debug: var=output_r10
+
+- name: Access Routers BGP PBR config
+  hosts: r10
+  gather_facts: no
+  connection: local
+
+  tasks:
+   - name: r10
+     ios_config:
+       src: ./files/r10_pbr
+
+     register: output_r10
+   - debug: var=output_r10
+
 
 
 - name: Core BGP Routing
@@ -144,4 +198,3 @@
 
       register: output_r6
     - debug: var=output_r6
-
