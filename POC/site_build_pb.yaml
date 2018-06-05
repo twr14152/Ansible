@@ -12,6 +12,7 @@
   - host_vars/r7
   roles:
     - routing
+    - policy-based-rting
 
 - hosts: r8
   gather_facts: false
@@ -20,6 +21,7 @@
   - host_vars/r8
   roles:
     - routing
+    - policy-based-rting
 
 - hosts: r9
   gather_facts: false
@@ -28,6 +30,7 @@
   - host_vars/r9
   roles:
     - routing
+    - policy-based-rting
 
 - hosts: r10
   gather_facts: false
@@ -36,7 +39,7 @@
   - host_vars/r10
   roles:
     - routing
-
+    - policy-based-rting
 
 - hosts: r1
   gather_facts: false
