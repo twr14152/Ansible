@@ -4,7 +4,6 @@
   gather_facts: false
   connection: local
 
-
   tasks:
     - name: show run command
       ios_command:
