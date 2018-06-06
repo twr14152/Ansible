@@ -54,3 +54,28 @@
 
     - name: save output to a file
       copy: content="{{ print_output4.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_interfaces.txt"
+
+    - name: show ip ospf neighbor
+      ios_command:
+        commands:
+          - show ip ospf neighbor
+
+      register: print_output5
+
+    - debug: var=print_output5.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output5.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_ospf_neighbors.txt"
+
+    - name: show ip bgp summ
+      ios_command:
+        commands:
+          - show ip bgp summ
+
+      register: print_output6
+
+    - debug: var=print_output6.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output6.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_bgp_nei_status.txt"
+
