@@ -2,7 +2,7 @@
 - name: Push Configs to routers
   hosts: core-rtrs, distribution-rtrs, access-rtrs
   gather_facts: no
-  connection: local 
+  connection: network_cli 
 
   tasks:
     - name: NetMgmt Configs
@@ -16,7 +16,7 @@
 - name: Access Routers BGP config
   hosts: r7
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r7
@@ -29,7 +29,7 @@
 - name: Access Routers BGP PBR config
   hosts: r7
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r7
@@ -43,7 +43,7 @@
 - name: Access Routers BGP config
   hosts: r8
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r8
@@ -56,7 +56,7 @@
 - name: Access Routers BGP PBR config
   hosts: r8
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
    - name: r8
@@ -69,7 +69,7 @@
 - name: Access Routers BGP config
   hosts: r9
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r9
@@ -83,7 +83,7 @@
 - name: Access Routers BGP PBR config
   hosts: r9
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r9
@@ -96,7 +96,7 @@
 - name: Access Routers BGP config
   hosts: r10
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r10
@@ -109,7 +109,7 @@
 - name: Access Routers BGP PBR config
   hosts: r10
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
    - name: r10
@@ -124,7 +124,7 @@
 - name: Core BGP Routing
   hosts: r1
   gather_facts: no
-  connection: local    
+  connection: network_cli
 
   tasks:
     - name: r1
@@ -137,7 +137,7 @@
 - name: Core BGP Routing
   hosts: r2
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r2
@@ -150,7 +150,7 @@
 - name: Distribution BGP routing
   hosts: r3
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r3
@@ -163,7 +163,7 @@
 - name: Distribution BGP routing
   hosts: r4
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r4
@@ -176,7 +176,7 @@
 - name: Distribution BGP routing
   hosts: r5
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r5
@@ -189,7 +189,7 @@
 - name: Distribution BGP routing
   hosts: r6
   gather_facts: no
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: r6
@@ -198,3 +198,5 @@
 
       register: output_r6
     - debug: var=output_r6
+
+
