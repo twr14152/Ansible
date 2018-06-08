@@ -10,7 +10,7 @@
         src: ./files/mgmt.j2
      
       register: output_netmgmt
-    - debug: var=output_metmgmt
+    - debug: var=output_netmgmt
 
 
 - name: Access Routers BGP config
