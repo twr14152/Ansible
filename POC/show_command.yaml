@@ -2,7 +2,7 @@
 - name: Exec commands
   hosts: all
   gather_facts: false
-  connection: local
+  connection: network_cli
 
 
   tasks:
