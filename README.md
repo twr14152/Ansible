@@ -1,5 +1,14 @@
 Respository log:
 
+06/07-2018 -
+POC - Automation frame work that incorporates:
+- jinja templating 
+- roles
+- group and host vars
+- one playbook builds the templates
+- one playbook builds the environment
+- ansible2.5
+
 08/22/2017 -
 Added Playbook thats uses Jinja2 template
 - Playbook ospf_eigrp_net_template.yml
