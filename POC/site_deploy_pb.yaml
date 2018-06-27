@@ -13,6 +13,17 @@
     - debug: var=output_netmgmt
 
 
+- name: Configure Login Banner
+  connection: network_cli
+  gather_facts: no
+  hosts: all
+
+  tasks:
+    - ios_banner:
+        banner: login
+        text: |
+          Attention - This is a lab. Under no circumstances are you to take this message seriously!
+        state: present
 
 - name: IGP config
   hosts: core-rtrs, distribution-rtrs, access-rtrs
@@ -81,5 +92,4 @@
 
       register: output
     - debug: var=output
-
 
