@@ -4,6 +4,7 @@
   gather_facts: false
   connection: network_cli
 
+
   tasks:
     - name: show run command
       ios_command:
@@ -77,4 +78,28 @@
 
     - name: save output to a file
       copy: content="{{ print_output6.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_bgp_nei_status.txt"
+    
+    - name: show ip arp
+      ios_command:
+        commands:
+          - show ip arp
+
+      register: print_output7
+
+    - debug: var=print_output7.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output7.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_show_ip_arp.txt"    
+
+    - name: show ip eigrp neighbor
+      ios_command:
+        commands:
+          - show ip eigrp neighbor
+
+      register: print_output8
+
+    - debug: var=print_output8.stdout_lines
+
+    - name: save output to a file
+      copy: content="{{ print_output8.stdout[0] }}" dest="./show_cmd_archive/{{ inventory_hostname }}_eigrp_neighbors.txt"
 
