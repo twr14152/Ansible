@@ -13,6 +13,7 @@
   roles:
     - routing
     - policy-based-rting
+    - igp_routing
 
 - hosts: r8
   gather_facts: false
@@ -22,6 +23,7 @@
   roles:
     - routing
     - policy-based-rting
+    - igp_routing
 
 - hosts: r9
   gather_facts: false
@@ -31,6 +33,7 @@
   roles:
     - routing
     - policy-based-rting
+    - igp_routing
 
 - hosts: r10
   gather_facts: false
@@ -40,6 +43,7 @@
   roles:
     - routing
     - policy-based-rting
+    - igp_routing
 
 - hosts: r1
   gather_facts: false
@@ -48,6 +52,8 @@
   - host_vars/r1
   roles:
     - core_routing
+    - igp_routing
+
 
 - hosts: r2
   gather_facts: false
@@ -56,7 +62,7 @@
   - host_vars/r2
   roles:
     - core_routing
-
+    - igp_routing
 
 - hosts: r3
   gather_facts: false
@@ -65,7 +71,7 @@
   - host_vars/r3
   roles:
     - dist_routing
-
+    - igp_routing
 
 - hosts: r4
   gather_facts: false
@@ -74,6 +80,7 @@
   - host_vars/r4
   roles:
     - dist_routing
+    - igp_routing
 
 - hosts: r5
   gather_facts: false
@@ -82,7 +89,7 @@
   - host_vars/r5
   roles:
     - dist_routing
-
+    - igp_routing
 
 - hosts: r6
   gather_facts: false
@@ -91,3 +98,4 @@
   - host_vars/r6
   roles:
     - dist_routing
+    - igp_routing
