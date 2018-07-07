@@ -23,6 +23,7 @@
         banner: login
         text: |
           Attention - This is a lab. Under no circumstances are you to take this message seriously!
+
         state: present
 
 - name: IGP config
@@ -92,4 +93,5 @@
 
       register: output
     - debug: var=output
+
 
