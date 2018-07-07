@@ -10,6 +10,7 @@ router ospf 1
  router-id {{ item.loopback_ip }}
  network 0.0.0.0 255.255.255.255 area 0
 
+# using eigrp to demonstrate a protocol migration at a later date
 
 router eigrp 1
  router-id {{ item.loopback_ip }}
