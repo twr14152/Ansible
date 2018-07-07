@@ -1,0 +1,165 @@
+.
+├── ansible.cfg
+├── discovery_script.yaml
+├── files
+│   ├── mgmt.j2
+│   ├── r10_bgp_neighbor
+│   ├── r10_igp_routing.j2
+│   ├── r10_pbr
+│   ├── r1_bgp_neighbor_core
+│   ├── r1_igp_routing.j2
+│   ├── r2_bgp_neighbor_core
+│   ├── r2_igp_routing.j2
+│   ├── r3_bgp_neighbor_dist
+│   ├── r3_igp_routing.j2
+│   ├── r4_bgp_neighbor_dist
+│   ├── r4_igp_routing.j2
+│   ├── r5_bgp_neighbor_dist
+│   ├── r5_igp_routing.j2
+│   ├── r6_bgp_neighbor_dist
+│   ├── r6_igp_routing.j2
+│   ├── r7_bgp_neighbor
+│   ├── r7_igp_routing.j2
+│   ├── r7_pbr
+│   ├── r8_bgp_neighbor
+│   ├── r8_igp_routing.j2
+│   ├── r8_pbr
+│   ├── r9_bgp_neighbor
+│   ├── r9_igp_routing.j2
+│   └── r9_pbr
+├── group_vars
+│   └── rtrs
+│       └── all
+├── hosts
+├── host_vars
+│   ├── r1
+│   ├── r10
+│   ├── r2
+│   ├── r3
+│   ├── r4
+│   ├── r5
+│   ├── r6
+│   ├── r7
+│   ├── r8
+│   └── r9
+├── notes.txt
+├── roles
+│   ├── core_routing
+│   │   ├── tasks
+│   │   │   └── main.yaml
+│   │   └── templates
+│   │       └── bgp_neighbor_core.j2
+│   ├── dist_routing
+│   │   ├── tasks
+│   │   │   └── main.yaml
+│   │   └── templates
+│   │       └── bgp_neighbor_dist.j2
+│   ├── igp_routing
+│   │   ├── tasks
+│   │   │   └── main.yaml
+│   │   └── templates
+│   │       └── igp_routing.j2
+│   ├── management
+│   │   ├── tasks
+│   │   │   └── main.yaml
+│   │   └── templates
+│   │       └── mgmt.j2
+│   ├── policy-based-rting
+│   │   ├── tasks
+│   │   │   └── main.yaml
+│   │   └── templates
+│   │       └── pbr.j2
+│   └── routing
+│       ├── tasks
+│       │   └── main.yaml
+│       └── templates
+│           └── bgp_neighbor.j2
+├── show_cmd_archive
+│   ├── r10_bgp_nei_status.txt
+│   ├── r10_eigrp_neighbors.txt
+│   ├── r10_interfaces.txt
+│   ├── r10_ospf_neighbors.txt
+│   ├── r10_running_cfg.txt
+│   ├── r10_show_cdp_nei.txt
+│   ├── r10_show_ip_arp.txt
+│   ├── r10_show_version.txt
+│   ├── r1_bgp_nei_status.txt
+│   ├── r1_eigrp_neighbors.txt
+│   ├── r1_interfaces.txt
+│   ├── r1_ospf_neighbors.txt
+│   ├── r1_running_cfg.txt
+│   ├── r1_show_cdp_nei.txt
+│   ├── r1_show_ip_arp.txt
+│   ├── r1_show_version.txt
+│   ├── r2_bgp_nei_status.txt
+│   ├── r2_eigrp_neighbors.txt
+│   ├── r2_interfaces.txt
+│   ├── r2_ospf_neighbors.txt
+│   ├── r2_running_cfg.txt
+│   ├── r2_show_cdp_nei.txt
+│   ├── r2_show_ip_arp.txt
+│   ├── r2_show_version.txt
+│   ├── r3_bgp_nei_status.txt
+│   ├── r3_eigrp_neighbors.txt
+│   ├── r3_interfaces.txt
+│   ├── r3_ospf_neighbors.txt
+│   ├── r3_running_cfg.txt
+│   ├── r3_show_cdp_nei.txt
+│   ├── r3_show_ip_arp.txt
+│   ├── r3_show_version.txt
+│   ├── r4_bgp_nei_status.txt
+│   ├── r4_eigrp_neighbors.txt
+│   ├── r4_interfaces.txt
+│   ├── r4_ospf_neighbors.txt
+│   ├── r4_running_cfg.txt
+│   ├── r4_show_cdp_nei.txt
+│   ├── r4_show_ip_arp.txt
+│   ├── r4_show_version.txt
+│   ├── r5_bgp_nei_status.txt
+│   ├── r5_eigrp_neighbors.txt
+│   ├── r5_interfaces.txt
+│   ├── r5_ospf_neighbors.txt
+│   ├── r5_running_cfg.txt
+│   ├── r5_show_cdp_nei.txt
+│   ├── r5_show_ip_arp.txt
+│   ├── r5_show_version.txt
+│   ├── r6_bgp_nei_status.txt
+│   ├── r6_eigrp_neighbors.txt
+│   ├── r6_interfaces.txt
+│   ├── r6_ospf_neighbors.txt
+│   ├── r6_running_cfg.txt
+│   ├── r6_show_cdp_nei.txt
+│   ├── r6_show_ip_arp.txt
+│   ├── r6_show_version.txt
+│   ├── r7_bgp_nei_status.txt
+│   ├── r7_eigrp_neighbors.txt
+│   ├── r7_interfaces.txt
+│   ├── r7_ospf_neighbors.txt
+│   ├── r7_running_cfg.txt
+│   ├── r7_show_cdp_nei.txt
+│   ├── r7_show_ip_arp.txt
+│   ├── r7_show_version.txt
+│   ├── r8_bgp_nei_status.txt
+│   ├── r8_eigrp_neighbors.txt
+│   ├── r8_interfaces.txt
+│   ├── r8_ospf_neighbors.txt
+│   ├── r8_running_cfg.txt
+│   ├── r8_show_cdp_nei.txt
+│   ├── r8_show_ip_arp.txt
+│   ├── r8_show_version.txt
+│   ├── r9_bgp_nei_status.txt
+│   ├── r9_eigrp_neighbors.txt
+│   ├── r9_interfaces.txt
+│   ├── r9_ospf_neighbors.txt
+│   ├── r9_running_cfg.txt
+│   ├── r9_show_cdp_nei.txt
+│   ├── r9_show_ip_arp.txt
+│   └── r9_show_version.txt
+├── show_command.retry
+├── show_command.yaml
+├── site_build_pb.retry
+├── site_build_pb.yaml
+├── site_deploy_pb.retry
+└── site_deploy_pb.yaml
+
+24 directories, 138 files
