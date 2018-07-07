@@ -1,0 +1,18 @@
+# this template is used to enable igp routing
+#
+!
+interface loopback 0
+ description ROUTER_ID
+ ip address {{ item.loopback_ip }} 255.255.255.255
+!
+!
+router ospf 1
+ router-id {{ item.loopback_ip }}
+ network 0.0.0.0 255.255.255.255 area 0
+
+
+router eigrp 1
+ router-id {{ item.loopback_ip }}
+ network 157.130.0.0 255.255.0.0
+ network 10.0.0.0
+ no auto-summary
