@@ -5,5 +5,6 @@ This is an example of using Ansible to manage network infrastructure
 - use host variable to apply unique device configurations
 - Playbook for creating configuration templates for devices
 - Playbook for deploying configuration files to devices
-- Playbook for gathering device info
+- Playbook for gathering device info discovery.yaml
+- Playbook for issuing show commands
 
