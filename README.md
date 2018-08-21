@@ -1,4 +1,8 @@
+This respository is simply a collection of ansible playbooks I've put together over the years.
+
 Respository log:
+This is the most recent update:
+https://github.com/twr14152/Ansible/tree/master/POC
 
 06/07/2018 -
 POC - Automation frame work that incorporates:
