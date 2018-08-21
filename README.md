@@ -1,7 +1,7 @@
 This respository is simply a collection of ansible playbooks I've put together over the years.
 
 Respository log:
-- This is the most recent update:
+- This is the most recent/relavent update:
   - https://github.com/twr14152/Ansible/tree/master/POC
 
 
