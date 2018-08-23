@@ -7,3 +7,5 @@ This is an example of using Ansible to manage network infrastructure
 - Playbook for deploying configuration files to devices - site_deploy_pb.yaml
 - Playbook for gathering device info - discovery_script.yaml
 - Playbook for issuing show commands - show_command.yaml
+
+diagram.png
