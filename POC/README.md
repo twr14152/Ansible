@@ -8,4 +8,4 @@ This is an example of using Ansible to manage network infrastructure
 - Playbook for gathering device info - discovery_script.yaml
 - Playbook for issuing show commands - show_command.yaml
 
-diagram.png
+
