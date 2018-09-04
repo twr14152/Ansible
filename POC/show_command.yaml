@@ -9,8 +9,13 @@
     - name: exec commands
       ios_command:
         commands:
-          #- show run
-          - show ip bgp summ
+          #- clear ip bgp *
+          #- show cdp nei det
+          - show run
+          #- show ip route
+          #- show ip eigrp neigh 
+          #- show logging
+          #- show ip bgp nei | inc Last read
           #- show ip route summ
       register: print_output1
 
