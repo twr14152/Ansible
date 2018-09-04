@@ -7,3 +7,4 @@ item:
   password: test_pass
   neighbor_address2: 157.130.0.10
   remote_as2: 3
+  snmp_location: r8_location
