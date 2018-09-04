@@ -9,3 +9,4 @@ item:
   remote_as2: 9
   remote_as3: 10
   password: test_pass
+  snmp_location: r5_location
