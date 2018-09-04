@@ -7,7 +7,7 @@
   tasks:
     - name: NetMgmt Configs
       ios_config:
-        src: ./files/mgmt.j2
+        src: ./files/{{inventory_hostname}}_mgmt.j2
      
       register: output_netmgmt
     - debug: var=output_netmgmt
