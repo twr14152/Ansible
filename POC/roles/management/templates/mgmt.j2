@@ -1,10 +1,40 @@
 # This is generic management config
+# logging
+logging buffer 65000
+
+#timezone
+clock timezone UTC -5
 
 # snmp
 snmp-server community public RO
+snmp-server location {{ item.snmp_location }}
+snmp-server contact Dave Albert 555-555-5555
 
 # ssh version 
 ip ssh version 2
 
-# ntp server
+# ntp server bogus ip
 ntp server 4.4.4.4
+
+# Helpdesk username password
+username helpdesk password password1
+username helpdesk priv 1
+
+# do not use dns
+no ip domain-name lookup
+
+#Login in banner - DOES NOT WORK IN THIS METHOD
+#banner login ^z
+#Welcome to the automation lab Test.net 
+#^z
+
+# Line vty transport protocols
+line vty 0 15
+ transport input telnet ssh
+ exit
+
+#cdp run
+cdp run
+
+#domain-name
+ip domain-name testlab.net 
