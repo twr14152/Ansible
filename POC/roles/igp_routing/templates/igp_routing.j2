@@ -16,4 +16,6 @@ router eigrp 1
  router-id {{ item.loopback_ip }}
  network 157.130.0.0 255.255.0.0
  network 10.0.0.0
+ #Change AD for protcol migration
+ distance eigrp 121 180
  no auto-summary
