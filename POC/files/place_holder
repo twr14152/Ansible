@@ -1,1 +1,35 @@
-PH
+-rw-rw-r-- 1 todd todd 538 Sep  4 15:04 r10_bgp_neighbor
+-rw-rw-r-- 1 todd todd 347 Sep  4 15:04 r10_igp_routing.j2
+-rw-rw-r-- 1 todd todd 680 Sep  4 15:04 r10_mgmt.j2
+-rw-rw-r-- 1 todd todd 200 Sep  4 15:04 r10_pbr
+-rw-rw-r-- 1 todd todd 702 Sep  4 15:05 r1_bgp_neighbor_core
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r1_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r1_mgmt.j2
+-rw-rw-r-- 1 todd todd 702 Sep  4 15:05 r2_bgp_neighbor_core
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r2_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r2_mgmt.j2
+-rw-rw-r-- 1 todd todd 677 Sep  4 15:05 r3_bgp_neighbor_dist
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r3_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r3_mgmt.j2
+-rw-rw-r-- 1 todd todd 681 Sep  4 15:05 r4_bgp_neighbor_dist
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r4_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r4_mgmt.j2
+-rw-rw-r-- 1 todd todd 678 Sep  4 15:05 r5_bgp_neighbor_dist
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r5_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r5_mgmt.j2
+-rw-rw-r-- 1 todd todd 682 Sep  4 15:05 r6_bgp_neighbor_dist
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:05 r6_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r6_mgmt.j2
+-rw-rw-r-- 1 todd todd 521 Sep  4 15:04 r7_bgp_neighbor
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:04 r7_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r7_mgmt.j2
+-rw-rw-r-- 1 todd todd 192 Sep  4 15:04 r7_pbr
+-rw-rw-r-- 1 todd todd 525 Sep  4 15:04 r8_bgp_neighbor
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:04 r8_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r8_mgmt.j2
+-rw-rw-r-- 1 todd todd 192 Sep  4 15:04 r8_pbr
+-rw-rw-r-- 1 todd todd 521 Sep  4 15:04 r9_bgp_neighbor
+-rw-rw-r-- 1 todd todd 335 Sep  4 15:04 r9_igp_routing.j2
+-rw-rw-r-- 1 todd todd 679 Sep  4 15:04 r9_mgmt.j2
+-rw-rw-r-- 1 todd todd 192 Sep  4 15:04 r9_pbr
+
