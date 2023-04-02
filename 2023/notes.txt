@@ -1,0 +1,10 @@
+Ansible Notes:
+
+Refresher on command line syntax:
+
+-i inventory
+-u username
+-k ssh password (prompted for)
+-K become or enable password (prompted for)
+
+ansible-playbook -i hosts -u <uname> -k -K
