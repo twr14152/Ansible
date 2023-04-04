@@ -1,0 +1,45 @@
+---
+
+- name: show commands
+  gather_facts: false
+  hosts: ios-rtr
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+    ansible_become: yes
+    ansible_become_method: enable
+
+  tasks:
+    - name: Validate route exists
+      cisco.ios.ios_command:
+        commands:
+        - show ip interface brief | inc Lo
+        - show ip interface brief | inc 0/0
+
+'''
+
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ ansible-playbook -i hosts pb_ios_commands.yaml -u cisco -k -K -v
+Using /home/todd/.ansible.cfg as config file
+SSH password: 
+BECOME password[defaults to SSH password]: 
+[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see
+details
+
+PLAY [show commands] *****************************************************************************
+
+TASK [Validate route exists] *********************************************************************
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+ok: [r1] => {"changed": false, "stdout": ["Loopback0              10.255.255.1    YES manual up                    up", "FastEthernet0/0        10.0.1.1        YES NVRAM  up                    up"], "stdout_lines": [["Loopback0              10.255.255.1    YES manual up                    up"], ["FastEthernet0/0        10.0.1.1        YES NVRAM  up                    up"]]}
+ok: [r2] => {"changed": false, "stdout": ["Loopback0              10.255.255.2    YES manual up                    up", "FastEthernet0/0        10.0.2.1        YES NVRAM  up                    up"], "stdout_lines": [["Loopback0              10.255.255.2    YES manual up                    up"], ["FastEthernet0/0        10.0.2.1        YES NVRAM  up                    up"]]}
+ok: [r3] => {"changed": false, "stdout": ["Loopback0              10.255.255.3    YES manual up                    up", "FastEthernet0/0        10.0.3.1        YES NVRAM  administratively down down"], "stdout_lines": [["Loopback0              10.255.255.3    YES manual up                    up"], ["FastEthernet0/0        10.0.3.1        YES NVRAM  administratively down down"]]}
+
+PLAY RECAP ***************************************************************************************
+r1                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+r2                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+r3                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ 
+
+'''
