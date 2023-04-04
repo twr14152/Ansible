@@ -1,0 +1,50 @@
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ cat pb_ios_rtr_cfg_bkup.yaml 
+---
+- hosts: ios-rtr
+  gather_facts: no
+  hosts: all
+
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+    ansible_become: yes
+    ansible_become_method: enable
+
+  tasks:
+    - name: config backup 
+      cisco.ios.ios_config:
+        backup: yes
+      register: backup_ios_location
+      
+"""
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ ls backup/
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ ansible-playbook -i hosts pb_ios_rtr_cfg_bkup.yaml -u cisco -k -K
+SSH password: 
+BECOME password[defaults to SSH password]: 
+[WARNING]: Invalid characters were found in group names but not replaced, use
+-vvvv to see details
+[WARNING]: While constructing a mapping from
+/home/todd/Coding/python_stuff/netops/gns3net/pb_ios_rtr_cfg_bkup.yaml, line 2,
+column 3, found a duplicate dict key (hosts). Using last defined value only.
+
+PLAY [all] *********************************************************************
+
+TASK [config backup] ***********************************************************
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+changed: [r3]
+changed: [r2]
+changed: [r1]
+
+PLAY RECAP *********************************************************************
+r1                         : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+r2                         : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+r3                         : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ ls backup/
+r1_config.2023-04-04@09:15:29  r3_config.2023-04-04@09:15:28
+r2_config.2023-04-04@09:15:28
+(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ 
+
+"""
