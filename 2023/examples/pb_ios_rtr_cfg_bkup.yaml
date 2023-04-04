@@ -1,4 +1,3 @@
-(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ cat pb_ios_rtr_cfg_bkup.yaml 
 ---
 - hosts: ios-rtr
   gather_facts: no
