@@ -3,9 +3,16 @@ This respository is simply a collection of ansible playbooks I've put together o
 04/04/2023 - 
 Created folder 2023/
 - Just getting familiar with the most recent version of ansible after some time away.
-- Plan familiarizing myself with the changes by creating reference playbooks in section 2023/examples
+- Plan familiarizing myself with the changes by creating reference playbooks in section 2023/examples:
+  - ansible/2023/examples/pb_ios_rtr_cfg_bkup.yaml
+  - ansible/2023/examples/pb_remove_route_ios_rtr.yaml
+
+- Using GNS3 lab with old c7200 ios image. However still provies more router functionality than packt tracer.
+- Using linux mint for automation host on virtualbox
 
 
+
+2018
 Respository log:
 - This is the most recent/relavent update:
   - https://github.com/twr14152/Ansible/tree/master/POC
