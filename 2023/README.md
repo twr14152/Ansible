@@ -1,4 +1,5 @@
 ###
 Update - 4/4/2023
-- Just getting familiar with the most recent version of ansible after some time away.
-- Plan on familiarizing myself with the latest edition by creating reference playbooks in the example folder.
+- added 
+  - examples/pb_remove_route_ios_rtr.yaml
+  - examples/pb_ios_rtr_cfg_bkup.yaml
