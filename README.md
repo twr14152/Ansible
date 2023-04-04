@@ -1,5 +1,11 @@
 This respository is simply a collection of ansible playbooks I've put together over the years.
 
+04/04/2023 - 
+Created folder 2023/
+- Just getting familiar with the most recent version of ansible after some time away.
+- Plan familiarizing myself with the changes by creating reference playbooks in section 2023/examples
+
+
 Respository log:
 - This is the most recent/relavent update:
   - https://github.com/twr14152/Ansible/tree/master/POC
