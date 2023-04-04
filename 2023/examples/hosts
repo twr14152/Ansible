@@ -1,0 +1,4 @@
+[ios-rtr]
+r1 ansible_host=10.255.255.1
+r2 ansible_host=10.255.255.2
+r3 ansible_host=10.255.255.3
