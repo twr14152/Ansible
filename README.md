@@ -6,6 +6,7 @@ Created folder 2023/
 - Plan familiarizing myself with the changes by creating reference playbooks in section 2023/examples:
   - ansible/2023/examples/pb_ios_rtr_cfg_bkup.yaml
   - ansible/2023/examples/pb_remove_route_ios_rtr.yaml
+  - ansible/2023/examples/pb_ios_commands.yaml
 
 - Using GNS3 lab with old c7200 ios image. However still provies more router functionality than packt tracer.
 - Using linux mint for automation host on virtualbox
