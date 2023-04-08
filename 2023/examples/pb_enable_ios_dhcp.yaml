@@ -1,0 +1,52 @@
+---
+
+- name: enable_dhcp
+  gather_facts: false
+  hosts: r3
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.ios.ios
+    ansible_become: yes
+    ansible_become_method: enable
+
+  tasks:
+  - name: Exclude IPs from pool
+    cisco.ios.ios_config:
+      lines: ip dhcp excluded-address 10.0.3.0 10.0.3.10
+      
+  - name: Enble IOS DHCP Server
+    cisco.ios.ios_config:
+      lines:
+      - network 10.0.3.0 255.255.255.0
+      - default-router 10.0.3.1
+      - domain-name testlab.com
+      - dns-server 4.4.4.4
+      parents: ip dhcp pool 10.0.3.0_net
+
+    register: results
+
+
+#(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ ansible-playbook -i hosts pb_enable_ios_dhcp.yaml -u cisco -k -K -v
+#Using /home/todd/.ansible.cfg as config file
+#SSH password: 
+#BECOME password[defaults to SSH password]: 
+#[WARNING]: Invalid characters were found in group names but not replaced, use -vvvv to see
+#details
+
+#PLAY [enable_dhcp] *******************************************************************************
+
+#TASK [Exclude IPs from pool] *********************************************************************
+#[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+#[WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar
+#to how they appear if present in the running configuration on device
+#changed: [r3] => {"banners": {}, "changed": true, "commands": ["ip dhcp excluded-address 10.0.3.0 10.0.3.10"], "updates": ["ip dhcp excluded-address 10.0.3.0 10.0.3.10"]}
+
+#TASK [Enble IOS DHCP Server] *********************************************************************
+#changed: [r3] => {"banners": {}, "changed": true, "commands": ["ip dhcp pool 10.0.3.0_net", "network 10.0.3.0 255.255.255.0", "default-router 10.0.3.1", "domain-name testlab.com", "dns-server 4.4.4.4"], "updates": ["ip dhcp pool 10.0.3.0_net", "network 10.0.3.0 255.255.255.0", "default-router 10.0.3.1", "domain-name testlab.com", "dns-server 4.4.4.4"]}
+
+#PLAY RECAP ***************************************************************************************
+#r3                         : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+#(netops) todd@LinuxMint:~/Coding/python_stuff/netops/gns3net$ 
+
+
